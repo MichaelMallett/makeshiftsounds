@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function drupalmoduleupgrader_theme() {
+  return [
+    'dmu_block' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+        'class' => 'MyBlock',
+        'block_id' => 'my_block_id',
+        'block_label' => \Drupal::translation()->translate('Untitled'),
+        'configurable' => FALSE,
+      ],
+      'template' => 'Block',
+    ],
+    'dmu_controller' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+      ],
+      'template' => 'Controller',
+    ],
+    'dmu_entity_type' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+        'class' => 'MyEntityType',
+        // This will be pretty much pulled directly out of hook_entity_info().
+        'info' => [],
+      ],
+      'template' => 'EntityType',
+    ],
+    'dmu_event_subscriber' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+        'class' => 'MyConfigForm',
+        'event' => 0,
+        'priority' => 0,
+      ],
+      'template' => 'EventSubscriber',
+    ],
+    'dmu_form' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+        'class' => 'MyForm',
+        'form_id' => 'my_form_id',
+        'config' => FALSE,
+      ],
+      'template' => 'Form',
+    ],
+    'dmu_formatter' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+        'class' => 'MyFormatter',
+        'info' => [
+          'id' => 'formatter_id',
+          'label' => 'My Formatter',
+          'description' => 'Formatter description.',
+          'field_types' => [],
+        ],
+      ],
+      'template' => 'Formatter',
+    ],
+    'dmu_issue' => [
+      'variables' => [
+        'issue' => NULL,
+      ],
+      'template' => 'Issue',
+    ],
+    'dmu_outbound_path_processor' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+      ],
+      'template' => 'OutboundPathProcessor',
+    ],
+    'dmu_logger' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+      ],
+      'template' => 'Logger',
+    ],
+    'dmu_route_subscriber' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+      ],
+      'template' => 'RouteSubscriber',
+    ],
+    'dmu_report' => [
+      'variables' => [
+        'report' => NULL,
+        'issues' => [],
+      ],
+      'template' => 'Report',
+    ],
+    'dmu_widget' => [
+      'variables' => [
+        'module' => 'MYMODULE',
+        'class' => 'MyWidget',
+        'info' => [
+          'id' => 'widget_id',
+          'label' => 'My Widget',
+          'description' => 'Widget description goes here.',
+          'field_types' => [],
+        ],
+      ],
+      'template' => 'Widget',
+    ],
+  ];
+}
+
+function template_preprocess_dmu_report(array &$variables) {
+  $categories = \Drupal::config('drupalmoduleupgrader.tags')->get('category');
+
+  /** @var \Drupal\drupalmoduleupgrader\IssueInterface $issue */
+  foreach ($variables['report']->getIssues() as $issue) {
+    $category = $categories[ $issue->hasTag('category') ? $issue->getTag('category')[0] : 'misc' ];
+
+    $variables['issues'][$category][] = [
+      '#theme' => 'dmu_issue',
+      '#issue' => $issue,
+    ];
+  }
+  ksort($variables['issues']);
+}

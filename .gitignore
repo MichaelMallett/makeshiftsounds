@@ -1,5 +1,4 @@
 # Completely ignore docroot and shared folder
-docroot
 shared
 
 # Ignore all generated CSS

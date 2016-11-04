@@ -1,0 +1,33 @@
+{
+  "name": "drupal/drupalmoduleupgrader",
+  "description": "A Drush command to update Drupal 7 modules to Drupal 8.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "support": {
+    "issues": "https://drupal.org/project/issues/drupalmoduleupgrader",
+    "source": "https://drupal.org/project/drupalmoduleupgrader"
+  },
+  "require": {
+    "grom358/pharborist": "dev-master",
+    "symfony/finder": "^2.6.0",
+    "symfony/filesystem": "^2.6.0",
+    "cebe/markdown": "1.0.*@dev"
+  },
+  "keywords": [
+    "Drupal",
+    "upgrade",
+    "update",
+    "phpcs",
+    "PHP_CodeSniffer",
+    "standards"
+  ],
+  "require-dev": {
+    "mikey179/vfsStream": "^1.5",
+    "phpunit/phpunit": "^4.8"
+  },
+  "autoload": {
+    "psr-4": {
+        "Drupal\\drupalmoduleupgrader\\": "src/"
+    }
+  }
+}

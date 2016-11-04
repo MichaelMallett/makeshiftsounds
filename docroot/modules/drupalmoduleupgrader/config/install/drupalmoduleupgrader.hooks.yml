@@ -1,0 +1,269 @@
+definitions:
+  blocks:
+    message: 'Blocks are now plugins in the `MODULE\Plugin\Block` namespace.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1880620'
+        title: 'Blocks are now plugins'
+      -
+        url: 'https://api.drupal.org/api/drupal/core%21modules%21block%21block.api.php/group/block_api/8'
+        title: 'Drupal 8 Block API'
+    tags:
+      category:
+        - block
+    hook:
+      - block_info
+      - block_configure
+      - block_save
+      - block_view
+
+  boot:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1909596'
+        title: '`@hook` replaced by event subscriber'
+    tags:
+      category:
+        - system
+    delete: true
+
+  comment_status:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2296867'
+        title: '`@hook` removed.'
+    tags:
+      category:
+        - entity
+    hook:
+      - comment_publish
+      - comment_unpublish
+    delete: true
+
+  drupal_goto_alter:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2023537'
+        title: '`@hook` replaced by event subscriber'
+    tags:
+      category:
+        - system
+    delete: true
+
+  entity_info:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1827470'
+        title: 'Entity types are now annotated plugins'
+    tags:
+      category:
+        - entity
+    delete: true
+
+  exit:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1911186'
+        title: '`@hook` replaced by event subscriber'
+    tags:
+      category:
+        - system
+    delete: true
+
+  field_attach_bundle_crud:
+    message: '`@hook` has been renamed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1964766'
+        title: 'Bundle CRUD API moved to Entity API'
+    tags:
+      category:
+        - field
+    hook:
+      - field_attach_create_bundle
+      - field_attach_delete_bundle
+      - field_attach_rename_bundle
+
+  field_formatter:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1805846'
+        title: 'Field formatters are now plugins'
+    tags:
+      category:
+        - field
+    hook:
+      - field_formatter_info
+      - field_formatter_prepare_view
+      - field_formatter_settings_form
+      - field_formatter_settings_summary
+      - field_formatter_view
+    delete: true
+
+  field_type:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2064123'
+        title: 'Field types are now plugins'
+    tags:
+      category:
+        - field
+    hook:
+      - field_delete
+      - field_delete_revision
+      - field_info
+      - field_insert
+      - field_instance_settings_form
+      - field_is_empty
+      - field_load
+      - field_prepare_translation
+      - field_prepare_translation_alter
+      - field_prepare_view
+      - field_presave
+      - field_schema
+      - field_settings_form
+      - field_update
+      - field_validate
+    delete: true
+
+  field_widget:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1796000'
+        title: 'Field widgets are now plugins'
+    tags:
+      category:
+        - field
+    hook:
+      - field_widget_error
+      - field_widget_form
+      - field_widget_info
+      - field_widget_settings_form
+    delete: true
+
+  init:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2013014'
+        title: '`@hook` removed'
+    tags:
+      category:
+        - system
+    delete: true
+
+  library:
+    message: '`@hook` is now `MODULE.libraries.yml`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2201089'
+        title: '`@hook` replaced by `.libraries.yml` file'
+    tags:
+      category:
+        - system
+    delete: true
+
+  menu:
+    message: '`@hook` has been removed from Drupal 8.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1800686'
+        title: 'All functionality of `@hook` replaced'
+      -
+        url: 'https://www.drupal.org/node/2177901'
+        title: 'Dynamic routes are now defined in `MODULE.routing.yml`'
+      -
+        url: 'https://www.drupal.org/node/2119699'
+        title: 'Page callbacks have been converted to controller classes'
+      -
+        url: 'https://www.drupal.org/node/2089605'
+        title: 'Route naming convention'
+      -
+        url: 'https://www.drupal.org/node/2165243'
+        title: 'Contextual links are now plugins defined in `MODULE.links.contextual.yml`'
+      -
+        url: 'https://www.drupal.org/node/2007444'
+        title: 'Local actions are now plugins defined in `MODULE.links.action.yml`'
+      -
+        url: 'https://www.drupal.org/node/2044515'
+        title: 'Local tasks and now plugins defined in `MODULE.links.task.yml`'
+      -
+        url: 'https://www.drupal.org/node/2228089'
+        title: 'Menu links are now defined in `MODULE.links.menu.yml`'
+    tags:
+      category:
+        - menu
+    delete: true
+
+  menu_alter:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2118147#alter'
+        title: 'Replacements for `@hook`'
+    tags:
+      category:
+        - menu
+    delete: true
+
+  menu_site_status_alter:
+    message: '`@hook` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2020005'
+        title: '`@hook` is now an event subscriber'
+    tags:
+      category:
+        - system
+    delete: true
+
+  page_alter:
+    message: '`@hook` is deprecated and may only be used to alter #attached assets.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2357755'
+        title: '@hook deprecated'
+    tags:
+      category:
+        - render
+
+  page_build:
+    message: '`@hook` is deprecated and may only be used to alter #attached assets.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2357755'
+        title: '`@hook` deprecated'
+    tags:
+      category:
+        - render
+
+  url_outbound_alter:
+    message: '`@hook` has been replaced by path processors.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2238759'
+        title: '`@hook` replaced by `OutboundPathProcessorInterface`'
+    tags:
+      category:
+        - render
+        - system
+    delete: true
+
+  watchdog:
+    message: '@hook has been replaced by a PSR-3 compatible logging system.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2270941'
+        title: '`@hook` removed; `watchdog()` deprecated and replaced by PSR-3 compliant logging service'
+    tags:
+      category:
+        - system
+    delete: true

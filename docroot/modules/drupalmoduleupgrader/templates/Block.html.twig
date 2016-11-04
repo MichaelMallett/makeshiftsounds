@@ -1,0 +1,64 @@
+/**
+ * @file
+ * Contains \Drupal\{{ module }}\Plugin\Block\{{ class }}.
+ */
+
+namespace Drupal\{{ module }}\Plugin\Block;
+
+use Drupal\Core\Block\BlockBase;
+{% if configurable %}
+use Drupal\Core\Form\FormStateInterface;
+{% endif %}
+
+/**
+ * Provides the {{ class }} block.
+ *
+ * @Block(
+ *   id = "{{ module }}_{{ block_id }}",
+ *   admin_label = @Translation("{{ block_label }}")
+ * )
+ */
+class {{ class }} extends BlockBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function build() {
+    /**
+     * @FIXME
+     * hook_block_view() has been removed in Drupal 8. You should move your
+     * block's view logic into this method and delete {{ module }}_block_view()
+     * as soon as possible!
+     */
+    return {{ module }}_block_view('{{ block_id }}');
+  }
+
+  {% if configurable %}
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    /**
+     * @FIXME
+     * hook_block_configure() is gone in Drupal 8. You should move your block's
+     * configuration logic into this method and delete {{ module }}_block_configure()
+     * as soon as possible!
+     */
+    return {{ module }}_block_configure('{{ block_id }}');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    /**
+     * @FIXME
+     * hook_block_save() is gone in Drupal 8. You should move your block's save
+     * logic into this method and delete {{ module }}_block_save() as soon as
+     * possible!
+     */
+    return {{ module }}_block_save('{{ block_id }}', $form_state->getValues());
+  }
+  {% endif %}
+
+}

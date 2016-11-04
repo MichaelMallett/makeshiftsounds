@@ -1,0 +1,1000 @@
+# This file controls the behavior of the FunctionCall analyzer and the Disable
+# function call modifier.
+#
+# Each item in this file is either information about a single function, or a
+# group of functions. Groups will have the 'functions' key, listing the affected
+# functions.
+#
+# If 'disable' is true, the Disable plugin will unconditionally comment out
+# calls to the function, and leave a FIXME notice above it.
+
+definitions:
+  assets:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2169605'
+        title: '`drupal_add_css()`, `drupal_add_js()` and `drupal_add_library()` removed in favor of `#attached`'
+      -
+        url: 'https://www.drupal.org/node/2408597'
+        title: '`AssetResolverInterface` and `AttachedAssetsInterface` replace internal Asset API functions'
+    tags:
+      category:
+        - render
+        - ui
+    functions:
+      - drupal_add_css
+      - _drupal_add_css
+      - drupal_add_js
+      - _drupal_add_js
+      - drupal_add_library
+      - _drupal_add_library
+      - drupal_get_css
+      - drupal_get_js
+      - drupal_sort_css_js
+    fixme: |
+      The Assets API has totally changed. CSS, JavaScript, and libraries are now
+      attached directly to render arrays using the #attached property.
+    disable: true
+
+  cache:
+    message: 'The caching system has been rewritten.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1884796'
+        title: 'Drupal 8 Cache API'
+      -
+        url: 'https://www.drupal.org/node/1272696'
+        title: 'New cache API'
+    tags:
+      category:
+        - cache
+    functions:
+      - cache_clear_all
+      - cache_get
+      - cache_get_multiple
+      - _cache_get_object
+      - cache_is_empty
+      - cache_set
+
+  conf_path:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2275139'
+        title: '`@function` moved into `DrupalKernel`'
+    tags:
+      category:
+        - system
+
+  confirm_form:
+    message: '`@function` is now `\Drupal\Core\Form\ConfirmFormBase`'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1945416'
+        title: '`@function` removed'
+    tags:
+      category:
+        - form
+
+  crypt:
+    message: '`@function` has moved into the Crypt component.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1984806'
+        title: '`@function` moved into `\Drupal\Component\Utility\Crypt`'
+    tags:
+      category:
+        - utility
+    functions:
+      - drupal_hash_base64
+      - drupal_hmac_base64
+      - drupal_random_bytes
+
+  ctools_get_plugins:
+    message: 'The CTools plugin system has moved into core.'
+    documentation:
+      -
+        url: 'https://api.drupal.org/api/drupal/core%21core.api.php/group/plugin_api/8'
+        title: 'Drupal 8 Plugin API'
+    tags:
+      category:
+        - ctools
+
+  ctools_include:
+    message: 'Most CTools APIs have moved into core.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2164623'
+        title: 'Many common dependencies added to core'
+    tags:
+      category:
+        - ctools
+    disable: true
+    fixme: 'Most CTools APIs have been moved into core.'
+
+  ctools_export:
+    message: 'The CTools Export API has moved into core.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/developing/api/entity'
+        title: 'Drupal 8 Entity API'
+    tags:
+      category:
+        - ctools
+        - entity
+    functions:
+      - ctools_export_crud_new
+      - ctools_export_crud_load
+      - ctools_export_crud_load_multiple
+      - ctools_export_crud_load_all
+      - ctools_export_crud_save
+      - ctools_export_crud_delete
+      - ctools_export_crud_export
+      - ctools_export_crud_import
+      - ctools_export_crud_set_status
+      - ctools_export_crud_enable
+      - ctools_export_crud_disable
+      - ctools_export_load_object
+      - ctools_export_load_object_reset
+      - ctools_get_default_object
+      - ctools_export_unpack_object
+      - ctools_var_export
+      - ctools_export_object
+      - ctools_export_get_schema
+      - ctools_export_get_schemas
+      - ctools_export_get_schemas_by_module
+      - ctools_export_set_status
+      - ctools_export_set_object_status
+      - ctools_export_form
+      - ctools_export_new_object
+      - ctools_export_to_hook_code
+      - ctools_export_default_to_hook_code
+      - ctools_export_default_list
+    disable: true
+    fixme: 'The CTools Export API has been merged with the core entity API.'
+
+  ctools_object_cache:
+    message: 'The CTools object caching system has moved into core.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1805940'
+        title: 'TempStore API added to core'
+      -
+        url: 'https://www.drupal.org/node/2164623'
+        title: 'Modules added to Drupal 8 core'
+    tags:
+      category:
+        - ctools
+        - cache
+    functions:
+      - ctools_object_cache_get
+      - ctools_object_cache_set
+
+  current_path:
+    message: '`@function` has been replaced by the <current> route.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2382211'
+        title: '`current_path()` replaced by the <current> route'
+    tags:
+      category:
+        - menu
+        - system
+
+  drupal_add_tabledrag:
+    message: '`@function` is now the `#tabledrag` property of a render array.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2160571'
+        title: '`@function` replaced by render array attachment'
+    tags:
+      category:
+        - render
+        - ui
+    fixme: |
+      TableDrag is now attached with the #tabledrag property of certain render
+      arrays. @function is now internal and should never be called directly.
+    disable: true
+
+  drupal_array:
+    message: '`@function` has been moved into the NestedArray utility class.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1870678'
+        title: '`drupal_array_*` functions replaced by static methods of `NestedArray` utility'
+    tags:
+      category:
+        - utility
+    functions:
+      - drupal_array_merge_deep
+      - drupal_array_merge_deep_array
+      - drupal_array_get_nested_value
+      - drupal_array_set_nested_value
+      - drupal_array_unset_nested_value
+      - drupal_array_nested_key_exists
+
+  drupal_cron_run:
+    message: '`@function` was moved into the `cron` service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2181921'
+        title: '`@function` replaced by cron service'
+    tags:
+      category:
+        - system
+
+  drupal_exit:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2017339'
+        title: '`@function` removed'
+    tags:
+      category:
+        - system
+
+  drupal_get_query_array:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2079005'
+        title: '`@function` replaced by native `parse_str()` function'
+    tags:
+      category:
+        - utility
+    fixme: |
+      @function has been removed in favor of PHP's native parse_str(). You should
+      use that function instead and pass a destination array by reference.
+      For more information, see:
+      https://www.drupal.org/node/2079005
+      http://www.php.net/parse_str
+    disable: true
+
+  drupal_get_title:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2067859'
+        title: '`@function` removed'
+    tags:
+      category:
+        - system
+        - ui
+
+  drupal_goto:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2023537'
+        title: '`@function` removed'
+    tags:
+      category:
+        - system
+
+  drupal_http_request:
+    message: '`@function` has been replaced by Guzzle.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1862446'
+        title: 'Guzzle HTTP client in Drupal core'
+      -
+        url: 'http://docs.guzzlephp.org/en/latest'
+        title: 'Guzzle documentation'
+    tags:
+      category:
+        - system
+    fixme: |
+      @function has been replaced by the Guzzle HTTP client, which is bundled
+      with Drupal core.
+    disable: true
+
+  drupal_is_cli:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2295037'
+        title: '`@function` removed'
+    tags:
+      category:
+        - system
+
+  drupal_map_assoc:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2207453'
+        title: '`@function` removed'
+    tags:
+      category:
+        - form
+        - utility
+
+  drupal_render:
+    message: '`@function` has been removed.'
+    tags:
+      category:
+        - render
+
+  drupal_set_title:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2067859'
+        title: '`@function` removed'
+    tags:
+      category:
+        - system
+        - ui
+    fixme: |
+      @function has been removed. There are now a few ways to set the title
+      dynamically, depending on the situation.
+    disable: true
+
+  drupal_site_offline:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1628046'
+        title: '`@function` removed in favor of exceptions'
+    tags:
+      category:
+        - system
+    fixme: |
+      @function has been removed. If your code needs to fail, it should throw
+      a meaningful exception instead.
+    disable: true
+
+  drupal_valid_path:
+    message: '`@function` has been moved into the PathValidator service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2302541'
+        title: '`@function` moved into PathValidator service'
+    tags:
+      category:
+        - system
+
+  drupal_var_export:
+    message: '`@function` is now part of the Variable utility.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2368411'
+        title: '`@function` moved into Variable utility'
+    tags:
+      category:
+        - system
+
+  drupal_write_record:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2340291'
+        title: '`@function` removed'
+    tags:
+      category:
+        - db
+        - system
+
+  element:
+    message: '`@function` is now a method of the `Element` class.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2173683'
+        title: '`element_*` functions moved into `Element` class'
+    tags:
+      category:
+        - render
+        - utility
+    functions:
+      - element_child
+      - element_children
+      - element_get_visible_children
+      - element_properties
+      - element_property
+      - element_set_attributes
+
+  entity_create:
+    message: '`@function` is now a method of `EntityInterface`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2266845'
+        title: '`@function` replaced by `EntityInterface::create()`'
+    tags:
+      category:
+        - entity
+
+  entity_extract_ids:
+    message: '`@function` replaced by methods of `EntityInterface`'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1724986'
+        title: '`@function` removed'
+    tags:
+      category:
+        - entity
+
+  entity_get_info:
+    message: '`@function` is now a method of the EntityManager service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1929006'
+        title: '`@function` is deprecated'
+    tags:
+      category:
+        - entity
+
+  entity_crud:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2266845'
+        title: 'Entities are now classed objects implementing `EntityInterface`'
+    tags:
+      category:
+        - entity
+    functions:
+      - entity_load
+      - entity_load_multiple
+      - entity_save
+      - entity_delete
+      - entity_label
+      - node_load
+      - node_load_multiple
+      - node_save
+      - node_delete
+      - user_load
+      - user_load_multiple
+      - user_save
+      - user_delete
+      - comment_load
+      - comment_load_multiple
+      - comment_save
+      - comment_delete
+      - taxonomy_term_load
+      - taxonomy_term_load_multiple
+      - taxonomy_term_save
+      - taxonomy_term_delete
+
+  field:
+    message: 'The Field API CRUD functions have been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2012896'
+        title: 'Fields and field instances are now entities'
+    tags:
+      category:
+        - field
+    functions:
+      - field_create_field
+      - field_create_instance
+      - field_delete_field
+      - field_delete_instance
+      - field_info_fields
+    fixme: |
+      Fields and field instances are now exportable configuration entities, and
+      the Field Info API has been removed.
+    disable: true
+
+  field_formatter:
+    message: '`@function` has been replaced with a field formatter plugin manager.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1805846'
+        title: 'Field formatters are now plugins'
+    tags:
+      category:
+        - field
+    functions:
+      - field_info_formatter_types
+      - field_info_formatter_settings
+
+  field_type:
+    message: '`@function` has been replaced with a field type plugin manager.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2064123'
+        title: 'Field types are now plugins'
+    tags:
+      category:
+        - field
+    functions:
+      - field_info_field_types
+      - field_info_field_settings
+
+  field_update_field:
+    message: '`@function` is now `FieldStorageConfig::save()`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2012896'
+        title: 'Field CRUD API replaced by Entity API'
+    tags:
+      category:
+        - field
+
+  field_update_instance:
+    message: '`@function` is now `FieldConfig::save()`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2012896'
+        title: 'Field CRUD API replaced by Entity API'
+    tags:
+      category:
+        - field
+
+  field_view_field:
+    message: '`@function` is now a method of `FieldItemInterface`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2208327'
+        title: '`@function` moved into `FieldItemInterface`'
+    tags:
+      category:
+        - field
+
+  field_view_value:
+    message: '`@function` is now a method of `FieldItemListInterface`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2208327'
+        title: '`@function` moved into `FieldItemListInterface`'
+    tags:
+      category:
+        - field
+
+  field_widget:
+    message: '`@function` is now a method of `WidgetInterface`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1796000'
+        title: 'Field widgets are now plugins'
+    tags:
+      category:
+        - field
+    functions:
+      - field_default_extract_form_values
+      - field_default_form
+      - field_default_form_errors
+      - field_default_submit
+      - field_info_widget_types
+
+  file_system:
+    message: '`@function` is now a method of the `file_system` service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2418133'
+        title: 'File system functions moved into `file_system` service'
+    tags:
+      category:
+        - system
+    functions:
+      - drupal_basename
+      - drupal_chmod
+      - drupal_dirname
+      - drupal_mkdir
+      - drupal_move_uploaded_file
+      - drupal_realpath
+      - drupal_rmdir
+      - drupal_tempnam
+      - drupal_unlink
+      - file_stream_wrapper_valid_scheme
+      - file_uri_scheme
+
+  form:
+    message: '`@function` has moved into the FormBuilder service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2121003'
+        title: 'Form generation functions moved into FormBuilder service'
+    tags:
+      category:
+        - form
+    functions:
+      - drupal_build_form
+      - drupal_get_form
+      - drupal_form_submit
+      - drupal_prepare_form
+      - drupal_process_form
+      - drupal_rebuild_form
+      - drupal_redirect_form
+      - drupal_retrieve_form
+      - drupal_validate_form
+      - form_execute_handlers
+      - form_get_cache
+      - form_load_include
+      - form_set_cache
+
+  form_state:
+    message: '`@function` is now a method of `FormStateInterface`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2121003'
+        title: 'Form functions moved into `FormStateInterface`'
+    tags:
+      category:
+        - form
+    functions:
+      - form_clear_error
+      - form_error
+      - form_get_errors
+      - form_set_error
+      - form_set_value
+      - form_state_defaults
+      - form_state_values_clean
+
+  format_interval:
+    message: '`@function` was moved into the `date.formatter` service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2173787'
+        title: '`@function` moved to date formatter service'
+    tags:
+      category:
+        - render
+        - ui
+        - utility
+
+  format_plural:
+    message: '`@function` was moved into the translation service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2173787'
+        title: '`@function` moved to translation service'
+    tags:
+      category:
+        - render
+        - ui
+        - utility
+
+  html:
+    message: '`@function` has been moved into the HTML component.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2388737'
+        title: 'HTML functions moved to a component'
+    functions:
+      - drupal_clean_css_identifer
+      - drupal_html_class
+      - drupal_html_id
+    tags:
+      category:
+        - render
+
+  ip_address:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1969794'
+        title: '`@function` removed'
+    tags:
+      category:
+        - system
+        - utility
+
+  json:
+    message: '`@function` has moved into the Serialization component.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2219113'
+        title: '`@function` moved into Serialization component'
+    functions:
+      - drupal_json_decode
+      - drupal_json_encode
+    tags:
+      category:
+        - system
+        - utility
+
+  l:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2346779'
+        title: '`@function` replaced by URL generation API'
+    tags:
+      category:
+        - system
+
+  menu_active_trail:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2240003'
+        title: 'Active trail functions replaced by `menu.active_trail` service.'
+    tags:
+      category:
+        - menu
+    functions:
+      - menu_get_active_trail
+      - menu_link_get_preferred
+      - menu_set_active_item
+      - menu_set_active_trail
+    fixme: |
+      The active trail system has been removed in Drupal 8 because the routing and
+      linking systems have been completely rewritten. You will need to rewrite this
+      code to use the menu.active_trail service, or override the service if you need
+      to alter the active trail.
+    disable: true
+
+  menu_item:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2203305'
+        title: '`@function` removed'
+    tags:
+      category:
+        - menu
+    functions:
+      - menu_get_item
+      - menu_set_item
+    fixme: |
+      @function has been removed. To retrieve route information, use the
+      RouteMatch object, which you can retrieve by calling \Drupal::routeMatch().
+    disable: true
+
+  menu_tree:
+    message: '`@function` has been replaced by `menu.link_tree` service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2226481'
+        title: 'Menu tree building is now a service'
+      -
+        url: 'https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Menu%21MenuLinkTree.php/class/MenuLinkTree/8'
+        title: '`MenuLinkTree` documentation'
+    tags:
+      category:
+        - menu
+    functions:
+      - menu_build_tree
+      - menu_parent_options
+      - menu_tree
+      - menu_tree_all_data
+      - menu_tree_check_access
+      - menu_tree_collect_node_links
+      - menu_tree_data
+      - menu_tree_page_data
+      - menu_tree_get_path
+      - menu_tree_set_path
+    fixme: |
+      @function is gone in Drupal 8. To generate or work with menu trees, you'll need to
+      use the menu.link_tree service.
+    disable: true
+
+  module_invoke:
+    message: '`@function` is now a method of the `module_handler` service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1894902'
+        title: '`@function` replaced by `module_handler` service'
+    tags:
+      category:
+        - system
+
+  module_invoke_all:
+    message: '`@function` is now a method of the `module_handler` service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1894902'
+        title: '`@function` replaced by `module_handler` service'
+    tags:
+      category:
+        - system
+
+  _node_revision_access:
+    message: '`@function` was moved into an access-checking service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2328179'
+        title: '`@function` replaced'
+    tags:
+      category:
+        - entity
+        - node
+
+  stream_wrappers:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2393323'
+        title: '`@function` moved into stream wrapper manager service.'
+    tags:
+      category:
+        - system
+    functions:
+      - file_get_stream_wrappers
+      - file_stream_wrapper_get_class
+      - file_stream_wrapper_get_instance_by_uri
+      - file_stream_wrapper_get_instance_by_scheme
+
+  t_meta:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2021435'
+        title: '`@function` replaced by `t()`'
+    tags:
+      category:
+        - system
+    functions:
+      - get_t
+      - st
+
+  taxonomy:
+    message: '`@function` is now a method of the taxonomy term storage controller.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2328205'
+        title: 'Certain Taxonomy API functions have moved into `TermStorage` class'
+    tags:
+      category:
+        - entity
+        - taxonomy
+    functions:
+      - taxonomy_get_tree
+      - taxonomy_term_load_children
+      - taxonomy_term_load_parents
+      - taxonomy_term_load_parents_all
+
+  theme:
+    message: '`@function` has been renamed to `_theme()`, and should never be called directly.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2195739'
+        title: '`@function` renamed to `_theme()` and should not be called directly'
+    tags:
+      category:
+        - theme
+    fixme: |
+      @function has been renamed to _theme() and should NEVER be called directly.
+      Calling _theme() directly can alter the expected output and potentially
+      introduce security issues (see https://www.drupal.org/node/2195739). You
+      should use renderable arrays instead.
+    disable: true
+
+  theme_get_registry:
+    message: 'The theme registry is now a service.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2137545'
+        title: '`@function` is now two different methods of the `theme.registry` service'
+    tags:
+      category:
+        - theme
+
+  theme_registry:
+    message: 'Several low-level theme registry functions have moved.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2137545'
+        title: 'Theme registry moved to `theme.registry` service'
+    tags:
+      category:
+        - theme
+    functions:
+      - _theme_load_registry
+      - _theme_save_registry
+      - _theme_process_registry
+      - _theme_build_registry
+      - _theme_load_offline_registry
+    fixme: |
+      Several low-level theme system functions have been moved into the
+      theme.registry service.
+    disable: true
+
+  token:
+    message: 'The core token API is now a service.'
+    documentation:
+      -
+        url: https://www.drupal.org/node/1973488
+        title: 'Token API is now a service'
+    tags:
+      category:
+        - misc
+    functions:
+      - token_find_with_prefix
+      - token_generate
+      - token_info
+      - token_replace
+      - token_scan
+
+  unicode:
+    message: '`@function` has been moved into the Unicode utility class.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/1992584'
+        title: '`@function` moved into Unicode component'
+    tags:
+      category:
+        - utility
+    functions:
+      - decode_entities
+      - drupal_convert_to_utf8
+      - drupal_strlen
+      - drupal_strtolower
+      - drupal_strtoupper
+      - drupal_substr
+      - drupal_truncate_bytes
+      - drupal_ucfirst
+      - drupal_validate_utf8
+      - mime_header_encode
+      - mime_header_decode
+      - truncate_utf8
+      - unicode_check
+
+  url:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2346779'
+        title: '`@function` replaced by URL generation API'
+    tags:
+      category:
+        - system
+
+  url_utility:
+    message: '`@function` has been replaced by the `UrlHelper` utility.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2079005'
+        title: '`@function` is now a method of `\Drupal\Component\Utility\UrlHelper`'
+    tags:
+      category:
+        - utility
+    functions:
+      - drupal_encode_path
+      - drupal_get_query_parameters
+      - drupal_parse_url
+      - filter_xss_bad_protocol
+      - url_is_external
+
+  user_access:
+    message: '`@function` is now `AccountInterface::hasPermission()`.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2049309'
+        title: '`@function` got converted to a method on the user/account interface'
+    tags:
+      category:
+        - system
+        - user
+
+  variable_del:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2183531'
+        title: 'The Variable API has been removed'
+    tags:
+      category:
+        - config
+
+  variable_get:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2183531'
+        title: 'The Variable API has been removed'
+    tags:
+      category:
+        - config
+
+  variable_set:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2183531'
+        title: 'The Variable API has been removed'
+    tags:
+      category:
+        - config
+
+  watchdog:
+    message: '`@function` has been removed.'
+    documentation:
+      -
+        url: 'https://www.drupal.org/node/2270941'
+        title: '`@function` is deprecated'
+    tags:
+      category:
+        - system
