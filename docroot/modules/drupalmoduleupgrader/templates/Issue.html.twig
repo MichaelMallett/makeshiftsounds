@@ -1,0 +1,27 @@
+{% autoescape false %}
+    <details class="{{ issue.Tag('error_level') }}">
+      <summary>{{ issue.Title() }}</summary>
+
+      {% if issue.Summary is not empty %}<div>{{ issue.Summary }}</div>{% endif %}
+
+      {% if issue.Documentation is not empty %}
+      <h5>Documentation</h5>
+      <ul>
+        {% for doc in issue.Documentation %}
+        <li><a target="_blank" href="{{ doc.url }}">{{ doc.title }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if issue.Violations is not empty %}
+      <h5>Files Affected</h5>
+      <ul>
+      {% for violation in issue.Violations %}
+        <li>{{ violation.file }}{% if violation.line_number %}, line {{ violation.line_number }}{% endif %}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {% if issue.hasTag('fixable') %}<p class="fixable">This issue can be fixed automatically.</p>{% endif %}
+      {% if issue.Detectors is not empty %}<aside>Flagged by {{ issue.Detectors|join(', ') }}</aside>{% endif %}
+    </details>
+{% endautoescape %}

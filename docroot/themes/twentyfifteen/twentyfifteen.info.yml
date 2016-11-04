@@ -1,0 +1,23 @@
+name: 'Twenty Fifteen'
+type: theme
+description: 'Clean theme, blog-focused, and designed for clarity.'
+# core: 8.x
+
+libraries:
+  - twentyfifteen/base
+
+stylesheets-remove:
+  - normalize.css
+
+regions:
+  header: Header
+  sidebar: Sidebar
+  help: Help
+  content: Content
+  footer: Footer
+
+# Information added by Drupal.org packaging script on 2015-04-28
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'twentyfifteen'
+datestamp: 1430245082

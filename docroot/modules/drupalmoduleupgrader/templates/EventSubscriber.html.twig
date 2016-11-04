@@ -1,0 +1,20 @@
+/**
+ * @file
+ * Contains \Drupal\{{ module }}\EventSubscriber\{{ class }}.
+ */
+
+namespace Drupal\{{ module }}\EventSubscriber;
+
+use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+class {{ class }} implements EventSubscriberInterface {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getSubscribedEvents() {
+    return [ {{ event }} => ['onEvent', {{ priority }}]];
+  }
+
+}
