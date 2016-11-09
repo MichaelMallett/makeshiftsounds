@@ -1,3 +1,0 @@
-[submodule "drupalvm"]
-	path = drupalvm
-	url = https://github.com/geerlingguy/drupal-vm.git
