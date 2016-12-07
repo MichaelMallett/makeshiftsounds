@@ -1,0 +1,13 @@
+diff --git a/composer.json b/composer.json
+index b30411c..b0d70f0 100644
+--- a/composer.json
++++ b/composer.json
+@@ -2,7 +2,7 @@
+     "name": "drupal/s3fs",
+     "description": "Adds an Amazon Simple Storage Service-based remote file system to Drupal.",
+     "require": {
+-        "aws/aws-sdk-php": "^3.18"
++        "aws/aws-sdk-php": "~3.18"
+     },
+     "license": "GPL-2.0+",
+     "authors": [

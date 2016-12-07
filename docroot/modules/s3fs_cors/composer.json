@@ -1,0 +1,13 @@
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url":  "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+     "aws/aws-sdk-php": "~3.3.8",
+     "drupal/token": "2.0.x-dev"
+    }
+
+}
