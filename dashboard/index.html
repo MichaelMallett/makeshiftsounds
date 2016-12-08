@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+  <head>
+    <title>Drupal VM</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="//cdn.rawgit.com/geerlingguy/drupalvm.github.io/master/favicon.ico" type="image/vnd.microsoft.icon" />
+    <style>
+      .section-host {
+        font-family: monospace;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      /* minor fallback styling for when loaded without an internet connection */
+      .panel, .jumbotron, .well {
+        margin-bottom: 20px;
+      }
+      td, th {
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <section class="jumbotron">
+            <div class="row">
+              <div class="col-md-7 text-center">
+                <a href="https://www.drupalvm.com/"><img src="http://docs.drupalvm.com/en/latest/images/drupal-vm-logo.png" alt="Drupal VM" title="Welcome to Drupal VM"></a>
+                <p><a href="https://github.com/geerlingguy/drupal-vm">Drupal VM</a> is a VM for local Drupal development, built with Vagrant + Ansible.</p>
+                <p><a class="btn btn-primary btn-lg" href="http://docs.drupalvm.com/en/latest/" role="button">Read the documentation</a></p>
+              </div>
+
+              <div class="col-md-5">
+                <h5>/etc/hosts</h5>
+                <section class="well small">
+                  <ul class="section-host">
+        <li>192.168.88.88 local.makeshiftsounds.com</li>
+            <li>192.168.88.88 www.local.makeshiftsounds.com</li>
+            <li>192.168.88.88 dashboard.local.makeshiftsounds.com</li>      </ul>
+                </section>
+                <small>Unless you're using the <a href="https://github.com/cogitatio/vagrant-hostsupdater" target="_blank">vagrant-hostsupdater</a> or <a href="https://github.com/smdahlen/vagrant-hostmanager" target="_blank">vagrant-hostmanager</a> plugin, add the lines above to your host machine's hosts file.</small>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7">
+
+          <section class="panel panel-default">
+            <div class="panel-heading">Your sites</div>
+            <div class="panel-body">
+              <table class="table">
+        <thead>
+          <tr>
+            <th>Hostname</th>
+            <th>Document Root</th>
+            <th>Drush alias*</th>        </thead>
+        <tbody>
+          <tr>
+          <td><a href="http://local.makeshiftsounds.com">local.makeshiftsounds.com</a></td>
+          <td><code>/var/www/docroot</code></td>
+                  <td><code>drush @makeshiftsounds.local.makeshiftsounds.com</code></td>
+                </tr>
+                <tr><td colspan=3><small>*Note: If Ansible isn't installed on your host, Drush aliases are only created inside the VM.</small></td></tr>
+        </tbody>
+      </table>
+            </div>
+          </section>
+
+          <section class="panel panel-default">
+            <div class="panel-heading">Development tools</div>
+            <div class="panel-body">
+              <table class="table">
+        <tr>
+            <td>There are no development tools installed inside the VM.</td>
+          </tr>                                      </table>
+            </div>
+          </section>
+
+          <section class="panel panel-default">
+            <div class="panel-heading">PHP information</div>
+            <div class="panel-body">
+              <table class="table">
+        <tr>
+          <th>PHP Version</th>
+          <td><code>7.0</code></td>
+        </tr>
+        <tr>
+          <th>Webserver</th>
+          <td><code>Apache</code></td>
+        </tr>
+        <tr>
+          <th>Memory limit</th>
+          <td><code>192M</code></td>
+        </tr>
+        <tr>
+          <th>PHP-FPM enabled</th>
+          <td><code>yes</code></td>
+        </tr>
+        <tr><td colspan=2><small><a href="/server-info.php">View more details in the server's phpinfo() report</a>.</small></td></tr>
+      </table>
+            </div>
+          </section>
+        </div>
+
+        <div class="col-md-5">
+          <section class="panel panel-default">
+            <div class="panel-heading">MySQL connection information</div>
+            <div class="panel-body">
+              <table class="table">
+        <tr>
+          <th>MySQL Hostname</th>
+          <td><code>127.0.0.1</code></td>
+        </tr>
+        <tr>
+          <th>MySQL Port</th>
+          <td><code>3306</code></td>
+        </tr>
+        <tr>
+          <th>MySQL Username</th>
+          <td><code>root</code></td>
+        </tr>
+        <tr>
+          <th>MySQL Password</th>
+          <td><code>root</code></td>
+        </tr>
+        <tr>
+          <th>SSH Hostname</th>
+          <td><code>192.168.88.88</code></td>
+        </tr>
+        <tr>
+          <th>SSH Username</th>
+          <td><code>vagrant</code></td>
+        </tr>
+        <tr>
+          <th>SSH Private Key</th>
+          <td><code>~/.vagrant.d/insecure_private_key</code></td>
+        </tr>
+      </table>
+            </div>
+          </section>
+
+          <section class="panel panel-default">
+            <div class="panel-heading">Databases</div>
+            <div class="panel-body">
+              <table class="table">
+        <thead>
+          <tr>
+            <th>Database name</th>
+                      </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td><code>drupal</code></td>
+                          </tr>        </tbody>
+      </table>
+
+              <table class="table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td><code>drupal</code></td>
+              <td><code>drupal</code></td>
+            </tr>        </tbody>
+      </table>
+            </div>
+          </section>
+        </div>
+      </div>
+
+    </div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </body>
+</html>
