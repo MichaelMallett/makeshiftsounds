@@ -1,0 +1,14 @@
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url":  "https://packages.drupal.org/8"
+        }
+    ],
+    "name": "drupal/s3_cors",
+    "require": {
+     "aws/aws-sdk-php": "^3.18",
+     "drupal/token": "1.x-dev"
+    }
+
+}
