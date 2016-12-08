@@ -379,6 +379,13 @@ class ComposerStaticInitDrupal8
                 0 => __DIR__ . '/..' . '/doctrine/common/lib',
             ),
         ),
+        'C' => 
+        array (
+            'Composer\\CustomDirectoryInstaller' => 
+            array (
+                0 => __DIR__ . '/..' . '/mnsami/composer-custom-directory-installer/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -757,6 +764,7 @@ class ComposerStaticInitDrupal8
         'PHP_Token_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_VARNAME' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_SUPER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SWITCH' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_Stream' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream.php',
         'PHP_Token_Stream_CachingFactory' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream/CachingFactory.php',
