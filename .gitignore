@@ -1,10 +1,6 @@
 # Completely ignore docroot and shared folder
 shared
 
-# Ignore all generated CSS
-code/themes/rawpixel_bs/css
-
-
 # Created by https://www.gitignore.io/api/linux,phpstorm,drupal,sass,osx
 
 ### Linux ###
@@ -89,23 +85,6 @@ robots.txt
 sites/all/README.txt
 sites/all/modules/README.txt
 sites/all/themes/README.txt
-
-# Ignore everything but the "sites" folder ( for non core developer )
-.htaccess
-web.config
-authorize.php
-cron.php
-index.php
-install.php
-update.php
-xmlrpc.php
-/includes
-/misc
-/modules
-/profiles
-/scripts
-/themes
-
 
 ### Sass ###
 .sass-cache/

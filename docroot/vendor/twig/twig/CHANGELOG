@@ -1,6 +1,9 @@
 * 1.29.0 (2016-XX-XX)
 
+<<<<<<< HEAD
  * deprecated silent display of undefined blocks
+=======
+>>>>>>> 2e035996c0e83dceca7c76e57a66232de5afc949
  * deprecated support for mbstring.func_overload != 0
 
 * 1.28.2 (2016-11-23)

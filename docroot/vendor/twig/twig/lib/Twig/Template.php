@@ -605,6 +605,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
                 }
             } else {
                 $methods = get_class_methods($object);
+<<<<<<< HEAD
             }
             // sort values to have consistent behavior, so that "get" methods win precedence over "is" methods
             sort($methods);
@@ -632,6 +633,35 @@ abstract class Twig_Template implements Twig_TemplateInterface
                     $cache[$lcName] = $method;
                 }
             }
+=======
+            }
+            // sort values to have consistent behavior, so that "get" methods win precedence over "is" methods
+            sort($methods);
+
+            $cache = array();
+
+            foreach ($methods as $method) {
+                $cache[$method] = $method;
+                $cache[$lcName = strtolower($method)] = $method;
+
+                if ('g' === $lcName[0] && 0 === strpos($lcName, 'get')) {
+                    $name = substr($method, 3);
+                    $lcName = substr($lcName, 3);
+                } elseif ('i' === $lcName[0] && 0 === strpos($lcName, 'is')) {
+                    $name = substr($method, 2);
+                    $lcName = substr($lcName, 2);
+                } else {
+                    continue;
+                }
+
+                if (!isset($cache[$name])) {
+                    $cache[$name] = $method;
+                }
+                if (!isset($cache[$lcName])) {
+                    $cache[$lcName] = $method;
+                }
+            }
+>>>>>>> 2e035996c0e83dceca7c76e57a66232de5afc949
             self::$cache[$class] = $cache;
         }
 
