@@ -1,3 +1,0 @@
-s3fs_cors_origin: ''
-s3fs_https: 'http'
-s3fs_access_type: 'public-read'
