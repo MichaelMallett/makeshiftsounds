@@ -118,5 +118,24 @@ $databases['default']['default'] = array (
 );
 $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/default/files/config_dkygb1YKFGOiNAGVyCT-sSyyLY3aaRTuc1U4jcZJCmNsh0PpDsFg_YBR1PT2q_0vAcqIZqp6mQ/sync';
+$settings['stage_file_proxy_origin'] = 'https://makeshift:sounds@makeshiftsounds.com';
 
-
+$schemes = [
+  's3' => [
+    'driver' => 's3',
+    'config' => [
+      'options' => [],
+      'key' => 'AKIAISSBDHM3SADWVLWQ',
+      // 'key' and 'secret' do not need to be
+      'secret' => '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',
+      // provided if using IAM roles.
+      'region' => 'ap-southeast-2',
+      'bucket' => 'makeshiftsounds',
+      'cors' => TRUE,     //in this case, must be true
+      'cache' => TRUE,
+      // Creates a metadata cache to speed up lookups.
+    ],
+  ],
+];
+$settings['file_private_path'] = 'sites/default/files/private';
+$settings['flysystem'] = $schemes;

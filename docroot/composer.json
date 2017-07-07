@@ -1,22 +1,4 @@
 {
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "drupal/s3fs_cors",
-                "version": "dev-master",
-                "source": {
-                    "url": "https://github.com/MichaelMallett/drupal-s3fs_cors",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
-    ],
     "name": "drupal/drupal",
     "description": "Drupal is an open source content management platform powering millions of websites and applications.",
     "type": "project",
@@ -28,13 +10,15 @@
         "cweagans/composer-patches": "~1.0",
         "drupal/pathauto": "1.x-dev",
         "drupal/shuffle": "1.0-beta2",
-        "drupal/s3fs": "2.x-dev",
-        "drupal/s3fs_cors": "dev-master"
+        "drupal/stage_file_proxy": "^1.0@alpha",
+        "drupal/flysystem": "^1.0",
+        "drupal/flysystem_s3": "^1.0@alpha"
     },
     "replace": {
-        "drupal/core": "~8.2"
+        "drupal/core": "~8.3"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "preferred-install": "dist",
         "autoloader-suffix": "Drupal8"
@@ -42,7 +26,10 @@
     "extra": {
         "_readme": [
             "By default Drupal loads the autoloader from ./vendor/autoload.php.",
-            "To change the autoloader you can edit ./autoload.php."
+            "To change the autoloader you can edit ./autoload.php.",
+            "This file specifies the packages.drupal.org repository.",
+            "You can read more about this composer repository at:",
+            "https://www.drupal.org/node/2718229"
         ],
         "merge-plugin": {
             "include": [
@@ -53,6 +40,13 @@
             "merge-extra": false
         },
         "installer-paths": {
+            "core": ["type:drupal-core"],
+            "modules/contrib/{$name}": ["type:drupal-module"],
+            "profiles/contrib/{$name}": ["type:drupal-profile"],
+            "themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"],
+            "modules/custom/{$name}": ["type:drupal-custom-module"],
+            "themes/custom/{$name}": ["type:drupal-custom-theme"],
             "modules/{$name}": ["drupal/s3fs_cors"]
         }
     },
@@ -63,8 +57,16 @@
     },
     "scripts": {
         "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
-        "post-autoload-dump": "Drupal\\Core\\Composer\\Composer::ensureHtaccess",
+        "post-autoload-dump": [
+          "Drupal\\Core\\Composer\\Composer::ensureHtaccess"
+        ],
         "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
         "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup"
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ]
 }

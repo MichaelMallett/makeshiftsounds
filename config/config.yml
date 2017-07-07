@@ -81,7 +81,9 @@ mysql_users:
     password: "{{ drupal_mysql_password }}"
     priv: "{{ drupal_mysql_database }}.*:ALL"
 
-installed_extras: []
+installed_extras:
+  - xdebug
+  - drupalconsole
 
 extra_packages: []
 
@@ -137,3 +139,13 @@ mysql_wait_timeout: 300
 dashboard_install_dir: /var/www/dashboard
 known_hosts_path: ~/.ssh/known_hosts
 #ssh_home: "/var/www/docroot"
+
+# XDebug configuration. XDebug is disabled by default for better performance.
+php_xdebug_default_enable: 0
+php_xdebug_coverage_enable: 0
+php_xdebug_cli_enable: 1
+php_xdebug_remote_enable: 1
+php_xdebug_remote_connect_back: 1
+# Use PHPSTORM for PHPStorm, sublime.xdebug for Sublime Text.
+php_xdebug_idekey: PHPSTORM
+php_xdebug_max_nesting_level: 256
