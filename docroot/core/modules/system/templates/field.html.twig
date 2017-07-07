@@ -38,6 +38,7 @@
  * @ingroup themeable
  */
 #}
+
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes }}>
@@ -51,7 +52,6 @@
     {% endfor %}
   {% endif %}
 {% else %}
-  Test-field
   <div{{ attributes }}>
     <div{{ title_attributes }}>{{ label }}</div>
     {% if multiple %}

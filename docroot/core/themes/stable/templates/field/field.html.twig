@@ -36,8 +36,8 @@
  * @see template_preprocess_field()
  */
 #}
+
 {% if label_hidden %}
-  Test1
   {% if multiple %}
     <div{{ attributes }}>
       {% for item in items %}
@@ -50,14 +50,12 @@
     {% endfor %}
   {% endif %}
 {% else %}
-  Test2
   <div{{ attributes }}>
     <div{{ title_attributes }}>{{ label }}</div>
     {% if multiple %}
       <div>
     {% endif %}
     {% for item in items %}
-      {{  dump(items) }}
       <div{{ item.attributes }}>{{ item.content }}</div>
     {% endfor %}
     {% if multiple %}
