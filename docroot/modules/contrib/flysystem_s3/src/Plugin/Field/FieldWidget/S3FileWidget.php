@@ -9,7 +9,8 @@ namespace Drupal\flysystem_s3\Plugin\Field\FieldWidget;
  *   id = "file_generic",
  *   label = @Translation("S3File"),
  *   field_types = {
- *     "s3file"
+ *     "s3file",
+ *     "file"
  *   }
  * )
  */
