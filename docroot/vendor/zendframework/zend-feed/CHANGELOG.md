@@ -2,30 +2,16 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.8.0 - TBD
-
-### Added
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
-## 2.7.1 - TBD
+## 2.8.0 - 2017-04-02
 
 ### Added
 
 - [#27](https://github.com/zendframework/zend-feed/pull/27) adds a documentation
   chapter demonstrating wrapping a PSR-7 client to use with `Zend\Feed\Reader`.
+- [#22](https://github.com/zendframework/zend-feed/pull/22) adds missing
+  ExtensionManagerInterface on Writer\ExtensionPluginManager.
+- [#32](https://github.com/zendframework/zend-feed/pull/32) adds missing
+  ExtensionManagerInterface on Reader\ExtensionPluginManager.
 
 ### Deprecated
 
@@ -33,11 +19,17 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#38](https://github.com/zendframework/zend-feed/pull/38) dropped php 5.5
+  support
 
 ### Fixed
 
-- Nothing.
+- [#35](https://github.com/zendframework/zend-feed/pull/35) fixed
+  "A non-numeric value encountered" in php 7.1
+- [#39](https://github.com/zendframework/zend-feed/pull/39) fixed protocol
+  relative link absolutisation
+- [#40](https://github.com/zendframework/zend-feed/pull/40) fixed service
+  manager v3 compatibility aliases in extension plugin managers
 
 ## 2.7.0 - 2016-02-11
 
