@@ -232,7 +232,7 @@ REGEX;
 
         $output .= self::compressCode($rawChunk);
 
-        if (PHP_VERSION_ID >= 70000) {
+        if (\PHP_VERSION_ID >= 70000) {
             // PHP 7 memory manager will not release after token_get_all(), see https://bugs.php.net/70098
             unset($tokens, $rawChunk);
             gc_mem_caches();
@@ -275,7 +275,13 @@ REGEX;
      */
     private static function writeCacheFile($file, $content)
     {
-        $tmpFile = tempnam(dirname($file), basename($file));
+        $dir = dirname($file);
+        if (!is_writable($dir)) {
+            throw new \RuntimeException(sprintf('Cache directory "%s" is not writable.', $dir));
+        }
+
+        $tmpFile = tempnam($dir, basename($file));
+
         if (false !== @file_put_contents($tmpFile, $content) && @rename($tmpFile, $file)) {
             @chmod($file, 0666 & ~umask());
 

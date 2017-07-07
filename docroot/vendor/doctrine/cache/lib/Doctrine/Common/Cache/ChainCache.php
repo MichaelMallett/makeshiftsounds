@@ -29,14 +29,14 @@ class ChainCache extends CacheProvider
     /**
      * @var CacheProvider[]
      */
-    private $cacheProviders = [];
+    private $cacheProviders = array();
 
     /**
      * Constructor
      *
      * @param CacheProvider[] $cacheProviders
      */
-    public function __construct($cacheProviders = [])
+    public function __construct($cacheProviders = array())
     {
         $this->cacheProviders = $cacheProviders;
     }
@@ -136,7 +136,7 @@ class ChainCache extends CacheProvider
     protected function doGetStats()
     {
         // We return all the stats from all adapters
-        $stats = [];
+        $stats = array();
 
         foreach ($this->cacheProviders as $cacheProvider) {
             $stats[] = $cacheProvider->doGetStats();
