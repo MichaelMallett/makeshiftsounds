@@ -14,7 +14,9 @@
         "drupal/flysystem": "^1.0",
         "drupal/flysystem_s3": "^1.0@alpha",
         "drupal/redirect": "1.x-dev",
-        "drupal/metatag": "^1.1"
+        "drupal/metatag": "^1.1",
+        "drupal/google_analytics": "^2.1",
+        "drupal/social_post": "^1.0@alpha"
     },
     "replace": {
         "drupal/core": "~8.3"
