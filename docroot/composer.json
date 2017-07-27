@@ -13,7 +13,8 @@
         "drupal/stage_file_proxy": "^1.0@alpha",
         "drupal/flysystem": "^1.0",
         "drupal/flysystem_s3": "^1.0@alpha",
-        "drupal/redirect": "1.x-dev"
+        "drupal/redirect": "1.x-dev",
+        "drupal/metatag": "^1.1"
     },
     "replace": {
         "drupal/core": "~8.3"
