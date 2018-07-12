@@ -1,0 +1,4 @@
+name: makeshift-sounds
+recipe: drupal8
+config:
+  webroot: .

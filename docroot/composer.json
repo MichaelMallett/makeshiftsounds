@@ -16,10 +16,9 @@
         "drupal/redirect": "1.x-dev",
         "drupal/metatag": "^1.1",
         "drupal/google_analytics": "^2.1",
-        "drupal/social_post": "^1.0@alpha"
-    },
-    "replace": {
-        "drupal/core": "~8.3"
+        "drupal/social_post": "^1.0@alpha",
+        "drush/drush": "^9.3",
+        "drupal/core": "8.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
